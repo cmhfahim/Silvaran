@@ -84,4 +84,4 @@ if stl.button("Enter to Calculate CGPA"):
     stl.write("Your CGPA in this Trimester", res)
 
 if stl.button('Refresh'):
-    stl.experimental_rerun()
+    stl.empty()
