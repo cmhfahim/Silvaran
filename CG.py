@@ -82,3 +82,6 @@ if stl.button("Enter to Calculate CGPA"):
     cgpas = list(map(float, cgpas.split(',')))
     res = calcg(credits, cgpas)
     stl.write("Your CGPA in this Trimester", res)
+
+if st.button('Refresh'):
+    st.experimental_rerun()
