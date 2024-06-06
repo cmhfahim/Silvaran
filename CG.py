@@ -41,9 +41,12 @@ see = stl.selectbox('Enter your Choice', ['See Payment Roadmap', '1st Installmen
 if stl.button("See payments Roadmap"):
     res=fee(credit,waiver)
     if waiver=="100% Waiver":
-          stl.write("You Have to Pay Total:",res)
-          stl.write("You Have to Pay at registration :",15000)
-          stl.write("Remain balance will be adjusted")
+        if see=="See Payment Roadmap":
+                stl.write("You Have to Pay Total:",res)
+                stl.write("You Have to Pay at registration :",15000)
+                stl.write("Remain balance will be adjusted")
+        else:
+                stl.write("You don't need to pay in this installment")
           
     else:
         if see=="See Payment Roadmap":
