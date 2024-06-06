@@ -67,10 +67,6 @@ if stl.button("See payments Roadmap"):
         elif see=="3rd Installment":
                 stl.write("Third Installment Amount :",res[3])
 
-
-
-import streamlit as st
-
 def calculate(num1, num2, operation):
     if operation == 'Add':
         return num1 + num2
