@@ -66,3 +66,19 @@ if stl.button("See payments Roadmap"):
 
         elif see=="3rd Installment":
                 stl.write("Third Installment Amount :",res[3])
+
+stl.title("CGPA Calculator")
+
+def calcg(credits, cgpas):
+    lst = [credit * cgpa for credit, cgpa in zip(credits, cgpas)]
+    r = sum(lst) / sum(credits)
+    return round(r, 3)
+
+credits = stl.text_input("Enter your course credits for this trimester, separated by commas")
+cgpas = stl.text_input("Enter your CGPAs for this trimester, separated by commas")
+
+if stl.button("Enter to Calculate CGPA"):
+    credits = list(map(float, credits.split(',')))
+    cgpas = list(map(float, cgpas.split(',')))
+    res = calcg(credits, cgpas)
+    stl.write("Your CGPA in this Trimester", res)
