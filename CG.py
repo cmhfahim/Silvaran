@@ -32,8 +32,7 @@ def fee(credit,waiver):
 
     
 
-credit=stl.number_input("Enter Your Total Credits: ",key="input")
-
+credit=stl.number_input("Enter Your Total Credits: ")
 waiver = stl.selectbox('Please Provide Necessery Information', ['0% Waiver', '25% Waiver', '50% Waiver', '100% Waiver'])
 
 see = stl.selectbox('Enter your Choice', ['See Payment Roadmap', '1st Installment', '2nd Installment', '3rd Installment'])
@@ -82,6 +81,3 @@ if stl.button("Enter to Calculate CGPA"):
     cgpas = list(map(float, cgpas.split(',')))
     res = calcg(credits, cgpas)
     stl.write("Your CGPA in this Trimester", res)
-
-if stl.button('Refresh'):
-    stl.empty()
