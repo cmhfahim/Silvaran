@@ -32,7 +32,7 @@ def fee(credit,waiver):
 
     
 
-credit=stl.number_input("Enter Your Total Credits: ")
+credit=stl.number_input("Enter Your Total Credits: ",key="input")
 
 waiver = stl.selectbox('Please Provide Necessery Information', ['0% Waiver', '25% Waiver', '50% Waiver', '100% Waiver'])
 
