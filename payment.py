@@ -62,16 +62,16 @@ def payment():
 
                     stl.write("You Have to Pay Total:",res[0])
                     stl.write("You Have to Pay at registration :",res[1])
-                    stl.write("First Installment :",res[2])
-                    stl.write("Second Installment :",res[3])
-                    stl.write("Third Installment :",res[4])
+                    stl.write(" Pay your First Installment before: Jun 25, 2024:",res[2])
+                    stl.write("Pay your Second Installment before: Jul 16, 2024:",res[3])
+                    stl.write("Pay your Third Installment before: Aug 14, 2024:",res[4])
 
             elif see=="1st Installment":
 
-                    stl.write("First Installment Amount :",res[1])
+                    stl.write(" Pay your First Installment before: Jun 25, 2024:",res[2])
 
             elif see=="2nd Installment":
-                    stl.write("Second Installment Amount :",res[2])
+                    stl.write("Pay your Second Installment before: Jul 16, 2024:",res[3])
 
             elif see=="3rd Installment":
-                    stl.write("Third Installment Amount :",res[3])
+                    stl.write("Pay your Third Installment before: Aug 14, 2024:",res[4])
