@@ -1,4 +1,6 @@
 import streamlit as stl
+
+@stl.experimental_fragment
 def feedback():
     stl.header(":mailbox: Please Give your feedbacks")
 
