@@ -2,6 +2,8 @@ import streamlit as stl
 from streamlit_lottie import st_lottie
 import json
 import requests
+
+@stl.experimental_fragment
 def payment():
     stl.markdown("<h2 style='text-align: center; color: #E7D2CC;'>Payment Roadmap</h2>", unsafe_allow_html=True)
     def url(url):
