@@ -2,6 +2,8 @@ import streamlit as stl
 import requests
 from streamlit_lottie import st_lottie
 import json
+
+@stl.experimental_fragment
 def home():
     def url(url):
         req=requests.get(url)
