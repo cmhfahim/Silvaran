@@ -44,5 +44,5 @@ def CGPA():
 
     if stl.button("Calculate CGPA"):
         result = calcg(credits, cgpas)
-        stl.markdown(f"<h3 style='text-align: center; color: white;'>Your CGPA this trimester: {result}</h3>", unsafe_allow_html=True)
+        stl.markdown(f"<h3 style='text-align: center; color: white;'>Your GPA this trimester: {result}</h3>", unsafe_allow_html=True)
         stl.markdown("<h4 style='text-align: center; color: #E7D2CC;'>This is to solve some common problem of UIU students</h4>", unsafe_allow_html=True)
