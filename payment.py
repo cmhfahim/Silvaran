@@ -30,7 +30,7 @@ def payment():
         elif waiver == "100% Waiver or Scholarship":
             remain_amount = 0
 
-        discount_total_fee_1 = ((tution_fee * (remain_amount / 100))) + 6500
+        discount_total_fee_1 = ((tution_fee_1 * (remain_amount / 100))) + 6500
         discount_total_fee_1=discount_total_fee_1+tution_fee_2
         if waiver == "100% Waiver or Scholarship":
             return discount_total_fee_1
