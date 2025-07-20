@@ -5,7 +5,7 @@ import requests
 @stl.experimental_fragment
 def CGPA():
     stl.markdown("<h2 style='text-align: center; color: #E7D2CC;'>CGPA Calculator</h2>", unsafe_allow_html=True)
-    
+
     def url(url):
         req = requests.get(url)
         if req.status_code != 200:
@@ -14,20 +14,24 @@ def CGPA():
 
     ur = url("https://lottie.host/5f974a65-8317-49a8-9e68-521fa4c74013/6TsVSqaYmE.json")
     st_lottie(ur, height=300, key="Education")
-    
-    # Ask for number of courses first
+
+    # Ask user how many courses
     num_courses = stl.number_input("How many courses do you want to enter?", min_value=1, step=1)
+
+    # Define fixed options
+    credit_options = [1, 2, 3]
+    cgpa_options = [0, 1, 1.33, 1.67, 2, 2.33, 2.67, 3, 3.33, 3.67, 4]
 
     credits = []
     cgpas = []
 
-    # Dynamically generate inputs for each course
+    # Create selectboxes for each course
     for i in range(int(num_courses)):
         col1, col2 = stl.columns(2)
         with col1:
-            credit = stl.number_input(f"Course {i+1} Credits", min_value=0.0, step=0.5, key=f"credit_{i}")
+            credit = stl.selectbox(f"Course {i+1} Credit", credit_options, key=f"credit_{i}")
         with col2:
-            cgpa = stl.number_input(f"Course {i+1} CGPA", min_value=0.0, max_value=4.0, step=0.01, key=f"cgpa_{i}")
+            cgpa = stl.selectbox(f"Course {i+1} CGPA", cgpa_options, key=f"cgpa_{i}")
         credits.append(credit)
         cgpas.append(cgpa)
 
