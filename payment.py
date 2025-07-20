@@ -20,7 +20,7 @@ def payment():
             transition: 0.3s;
         }
         .stButton>button:hover {
-            background-color: #333333;
+            background-color:#023d2c;
             transform: scale(1.05);
         }
         .card {
