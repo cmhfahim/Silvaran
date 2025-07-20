@@ -1,54 +1,81 @@
 import streamlit as stl
+from streamlit_lottie import st_lottie
+import json
+import requests
 
 @stl.experimental_fragment
 def payment():
-    from helper.fee_calc import fee
+    stl.markdown("<h2 style='text-align: center; color: #E7D2CC;'>Payment Roadmap</h2>", unsafe_allow_html=True)
 
-    stl.header("Payment Estimator")
-    credit = stl.number_input("Enter how many credits you're taking:", min_value=1)
-    waiver = stl.selectbox("Select your waiver/scholarship type:", [
-        "No Waiver",
-        "25% Waiver",
-        "50% Waiver",
-        "100% Waiver or Scholarship"
-    ])
-    see = stl.selectbox("What do you want to see?", [
-        "See Payment Roadmap",
-        "1st Installment",
-        "2nd Installment",
-        "3rd Installment"
+    def url(url):
+        req = requests.get(url)
+        if req.status_code != 200:
+            return None
+        return req.json()
+
+    ur = url("https://lottie.host/e817d581-61a3-4c3f-bcaf-5f5d1a1c0f7e/cET0KKA2E0.json")
+    st_lottie(ur, height=300, key="Payment")
+
+    def fee(credit, waiver):
+        remain_amount = 0
+        tution_fee = (5525 * credit)
+
+        if waiver == "0% Waiver or Scholarship":
+            remain_amount = 100
+        elif waiver == "25% Waiver or Scholarship":
+            remain_amount = 75
+        elif waiver == "50% Waiver or Scholarship":
+            remain_amount = 50
+        elif waiver == "100% Waiver or Scholarship":
+            remain_amount = 0
+
+        discount_total_fee_1 = ((tution_fee * (remain_amount / 100))) + 6500
+        if waiver == "100% Waiver or Scholarship":
+            return discount_total_fee_1
+        else:
+            installment_1 = discount_total_fee_1 * (40 / 100)
+            reamin_fee = discount_total_fee_1 - installment_1
+            installment_2 = reamin_fee / 2
+            installment_3 = installment_2
+            lst = [discount_total_fee_1, installment_1, installment_2, installment_3]
+            return lst
+
+    credit_1 = stl.number_input("Enter Your Total Credits (Non-Retake): ")
+    credit_2 = stl.number_input("Enter Your Total Credits (Retake): ")
+    credit = (credit_1 + (credit_2) / 2)
+
+    waiver = stl.selectbox('Please Provide Necessary Information', [
+        '0% Waiver or Scholarship', '25% Waiver or Scholarship',
+        '50% Waiver or Scholarship', '100% Waiver or Scholarship'
     ])
 
-    # Custom styled button using HTML & query params
-    stl.markdown("""
+    see = stl.selectbox('Enter your Choice', [
+        'See Payment Roadmap', '1st Installment', '2nd Installment', '3rd Installment'
+    ])
+
+    # Style for only this button
+    custom_button = """
+    <div id="custom-button-wrapper">
         <style>
-            .black-button {
-                background-color: black;
-                color: white;
-                padding: 0.6rem 1.5rem;
+            #custom-button-wrapper button {
+                background-color: black !important;
+                color: white !important;
+                border: none;
                 border-radius: 8px;
-                text-align: center;
-                cursor: pointer;
-                font-weight: 500;
-                display: inline-block;
-                transition: background 0.3s ease;
-                margin-top: 10px;
+                padding: 0.75em 2em;
+                font-size: 1em;
+                transition: 0.3s;
             }
-            .black-button:hover {
-                background-color: #222;
+            #custom-button-wrapper button:hover {
+                background-color: #333333 !important;
+                transform: scale(1.05);
             }
         </style>
-        <div class="black-button" onclick="window.location.href='?payment_clicked=1'">
-            See payments Roadmap
-        </div>
-    """, unsafe_allow_html=True)
+    """
+    stl.markdown(custom_button, unsafe_allow_html=True)
 
-    # Check if button was clicked via query param
-    query_params = stl.experimental_get_query_params()
-    if "payment_clicked" in query_params:
-        stl.experimental_set_query_params()  # clear query param after click
+    if stl.button("See payments Roadmap", key="payment_button"):
         res = fee(credit, waiver)
-
         if waiver == "100% Waiver or Scholarship":
             if see == "See Payment Roadmap":
                 stl.markdown(f"""
@@ -74,8 +101,20 @@ def payment():
                 </div>
                 """, unsafe_allow_html=True)
             elif see == "1st Installment":
-                stl.markdown(f"<p><strong>1st Installment:</strong> {res[1]}</p>", unsafe_allow_html=True)
+                stl.markdown(f"""
+                <div style="background: transparent; color: black; padding: 1rem;">
+                    <p><strong>1st Installment (Due Aug 13, 2025):</strong> {res[1]}</p>
+                </div>
+                """, unsafe_allow_html=True)
             elif see == "2nd Installment":
-                stl.markdown(f"<p><strong>2nd Installment:</strong> {res[2]}</p>", unsafe_allow_html=True)
+                stl.markdown(f"""
+                <div style="background: transparent; color: black; padding: 1rem;">
+                    <p><strong>2nd Installment (Due Sep 14, 2025):</strong> {res[2]}</p>
+                </div>
+                """, unsafe_allow_html=True)
             elif see == "3rd Installment":
-                stl.markdown(f"<p><strong>3rd Installment:</strong> {res[3]}</p>", unsafe_allow_html=True)
+                stl.markdown(f"""
+                <div style="background: transparent; color: black; padding: 1rem;">
+                    <p><strong>3rd Installment (Due Oct 12, 2025):</strong> {res[3]}</p>
+                </div>
+                """, unsafe_allow_html=True)
