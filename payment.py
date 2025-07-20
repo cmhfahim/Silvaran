@@ -79,21 +79,21 @@ def payment():
         if waiver == "100% Waiver or Scholarship":
             if see == "See Payment Roadmap":
                 stl.markdown(f"""
-                <div style="background: transparent; color: black; padding: 1rem;">
+                <div style="background: transparent; color: white; padding: 1rem; font-size: 18px;">
                     <p><strong>You Have to Pay Total:</strong> {res}</p>
                     <p>Remain balance will be adjusted</p>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 stl.markdown(f"""
-                <div style="background: transparent; color: black; padding: 1rem;">
+                <div style="background: transparent; color: white; padding: 1rem; font-size: 18px;">
                     <p>You don't need to pay in this installment</p>
                 </div>
                 """, unsafe_allow_html=True)
         else:
             if see == "See Payment Roadmap":
                 stl.markdown(f"""
-                <div style="background: transparent; color: black; padding: 1rem;">
+                <div style="background: transparent; color: white; padding: 1rem; font-size: 18px;">
                     <p><strong>Total Payment:</strong> {res[0]}</p>
                     <p><strong>1st Installment (Due Aug 13, 2025):</strong> {res[1]}</p>
                     <p><strong>2nd Installment (Due Sep 14, 2025):</strong> {res[2]}</p>
@@ -102,19 +102,19 @@ def payment():
                 """, unsafe_allow_html=True)
             elif see == "1st Installment":
                 stl.markdown(f"""
-                <div style="background: transparent; color: black; padding: 1rem;">
+                <div style="background: transparent; color: white; padding: 1rem; font-size: 18px;">
                     <p><strong>1st Installment (Due Aug 13, 2025):</strong> {res[1]}</p>
                 </div>
                 """, unsafe_allow_html=True)
             elif see == "2nd Installment":
                 stl.markdown(f"""
-                <div style="background: transparent; color: black; padding: 1rem;">
+                <div style="background: transparent; color: white; padding: 1rem; font-size: 18px;">
                     <p><strong>2nd Installment (Due Sep 14, 2025):</strong> {res[2]}</p>
                 </div>
                 """, unsafe_allow_html=True)
             elif see == "3rd Installment":
                 stl.markdown(f"""
-                <div style="background: transparent; color: black; padding: 1rem;">
+                <div style="background: transparent; color: white; padding: 1rem; font-size: 18px;">
                     <p><strong>3rd Installment (Due Oct 12, 2025):</strong> {res[3]}</p>
                 </div>
                 """, unsafe_allow_html=True)
