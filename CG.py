@@ -19,7 +19,7 @@ def CGPA():
     num_courses = stl.number_input("How many courses do you want to enter?", min_value=1, step=1)
 
     # Define fixed options
-    credit_options = [1, 2, 3]
+    credit_options = [3,1,2]
     cgpa_options = [4, 3.67, 3.33, 3, 2.67, 2.33, 2, 1.67, 1.33, 1, 0]  # reversed
 
     credits = []
