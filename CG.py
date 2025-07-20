@@ -60,7 +60,7 @@ def CGPA():
         if new_total_credit == 0:
             overall_cgpa = 0
         else:
-            overall_cgpa = round(new_sum / new_total_credit, 3)
+            overall_cgpa = round(new_sum / new_total_credit, 2)
 
         # Display results
         stl.markdown(f"<h3 style='text-align: center; color: white;'>Your Trimester GPA: {trimester_cgpa}</h3>", unsafe_allow_html=True)
