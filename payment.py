@@ -7,11 +7,11 @@ import requests
 def payment():
     stl.markdown("<h2 style='text-align: center; color: #E7D2CC;'>Payment Roadmap</h2>", unsafe_allow_html=True)
 
-    # 🔹 Add custom CSS for button and card styling
+    # 🔹 Updated CSS styles: black button, transparent cards
     stl.markdown("""
         <style>
         .stButton>button {
-            background-color: #4CAF50;
+            background-color: black;
             color: white;
             padding: 0.75em 2em;
             font-size: 1em;
@@ -20,24 +20,26 @@ def payment():
             transition: 0.3s;
         }
         .stButton>button:hover {
-            background-color: #45a049;
+            background-color: #333333;
             transform: scale(1.05);
         }
         .card {
-            background-color: #f7f7f7;
-            padding: 1.5em;
+            background-color: transparent;
+            padding: 1.2em;
             margin: 1em 0;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid #4CAF50;
         }
         .card h4 {
-            color: #333;
+            color: #ffffff;
             margin-bottom: 0.5em;
+        }
+        .card p {
+            color: #dddddd;
         }
         </style>
     """, unsafe_allow_html=True)
 
-    # 🔹 Load Lottie animation
     def url(url):
         req = requests.get(url)
         if req.status_code != 200:
@@ -47,7 +49,6 @@ def payment():
     ur = url("https://lottie.host/e817d581-61a3-4c3f-bcaf-5f5d1a1c0f7e/cET0KKA2E0.json")
     st_lottie(ur, height=300, key="Payment")
 
-    # 🔹 Fee calculation logic
     def fee(credit, waiver):
         tution_fee = 5525 * credit
         remain_amount = {
@@ -68,7 +69,6 @@ def payment():
             installment_3 = installment_2
             return [discount_total_fee_1, installment_1, installment_2, installment_3]
 
-    # 🔹 User input
     credit_1 = stl.number_input("Enter Your Total Credits (Non-Retake): ")
     credit_2 = stl.number_input("Enter Your Total Credits (Retake): ")
     credit = credit_1 + (credit_2 / 2)
@@ -82,7 +82,6 @@ def payment():
         'See Payment Roadmap', '1st Installment', '2nd Installment', '3rd Installment'
     ])
 
-    # 🔹 Button and result display
     if stl.button("See payments Roadmap"):
         res = fee(credit, waiver)
 
@@ -100,7 +99,6 @@ def payment():
                         <h4>No payment required for this installment ✅</h4>
                     </div>
                 """, unsafe_allow_html=True)
-
         else:
             if see == "See Payment Roadmap":
                 stl.markdown(f"""
