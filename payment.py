@@ -16,9 +16,10 @@ def payment():
     ur = url("https://lottie.host/e817d581-61a3-4c3f-bcaf-5f5d1a1c0f7e/cET0KKA2E0.json")
     st_lottie(ur, height=300, key="Payment")
 
-    def fee(credit, waiver):
+    def fee(credit_1,credit_2,waiver):
         remain_amount = 0
-        tution_fee = (5525 * credit)
+        tution_fee_1 = (5525 * credit_1)
+        tution_fee_2 = (5525 * credit_2)
 
         if waiver == "0% Waiver or Scholarship":
             remain_amount = 100
@@ -30,6 +31,7 @@ def payment():
             remain_amount = 0
 
         discount_total_fee_1 = ((tution_fee * (remain_amount / 100))) + 6500
+        discount_total_fee_1=discount_total_fee_1+tution_fee_2
         if waiver == "100% Waiver or Scholarship":
             return discount_total_fee_1
         else:
@@ -42,7 +44,7 @@ def payment():
 
     credit_1 = stl.number_input("Enter Your Total Credits (Non-Retake): ")
     credit_2 = stl.number_input("Enter Your Total Credits (Retake): ")
-    credit = (credit_1 + (credit_2) / 2)
+    credit_2=credit_2/2
 
     waiver = stl.selectbox('Please Provide Necessary Information', [
         '0% Waiver or Scholarship', '25% Waiver or Scholarship',
@@ -75,7 +77,7 @@ def payment():
     stl.markdown(custom_button, unsafe_allow_html=True)
 
     if stl.button("See payments Roadmap", key="payment_button"):
-        res = fee(credit, waiver)
+        res = fee(credit_1,credit_2, waiver)
         if waiver == "100% Waiver or Scholarship":
             if see == "See Payment Roadmap":
                 stl.markdown(f"""
