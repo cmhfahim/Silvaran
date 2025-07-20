@@ -11,7 +11,7 @@ def payment():
     stl.markdown("""
         <style>
         .stButton>button {
-            background-color: #17303b;
+            background-color: #193642;
             color: white;
             padding: 0.75em 2em;
             font-size: 1em;
