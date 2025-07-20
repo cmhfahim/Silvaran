@@ -32,7 +32,7 @@ def payment():
             else:
                 
                 installment_1=discount_total_fee_1*(40/100)
-                reamin_fee=discount_total_fee-installment_1
+                reamin_fee=discount_total_fee_1-installment_1
                 installment_2=reamin_fee/2
                 reamin_fee-=installment_2
                 installment_3=installment_2
