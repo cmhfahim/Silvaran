@@ -14,13 +14,14 @@ def CGPA():
 
     ur = url("https://lottie.host/5f974a65-8317-49a8-9e68-521fa4c74013/6TsVSqaYmE.json")
     st_lottie(ur, height=300, key="Education")
-
-    # Ask user how many courses this trimester
-    num_courses = stl.number_input("How many courses do you want to enter?", min_value=1, step=1)
-
+    
     # Ask user for previous academic record
     num_prev_credit = stl.number_input("How many credits have you completed before this trimester?", min_value=0.0)
     pre_cgpa = stl.number_input("What is your previous CGPA?", min_value=0.0, max_value=4.0)
+
+    num_courses = stl.number_input("How many courses do you want to enter?", min_value=1, step=1)
+
+
 
     # Define options
     credit_options = [1, 2, 3]
