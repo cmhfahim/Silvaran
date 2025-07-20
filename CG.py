@@ -24,7 +24,7 @@ def CGPA():
 
 
     # Define options
-    credit_options = [1, 2, 3]
+    credit_options = [3,1,2]
     cgpa_options = [4, 3.67, 3.33, 3, 2.67, 2.33, 2, 1.67, 1.33, 1, 0]  # reversed
 
     credits = []
