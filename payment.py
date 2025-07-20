@@ -45,7 +45,7 @@ def payment():
     credit_2=stl.number_input("Enter Your Total Credits (Retake): ")
 
     credit=(credit_1+(credit_2)/2)
-    waiver = stl.selectbox('Please Provide Necessery Information', ['0% Waiver', '25% Waiver', '50% Waiver', '100% Waiver'])
+    waiver = stl.selectbox('Please Provide Necessery Information', ['0% Waiver or Scholarship', '25% Waiver or Scholarship', '50% Waiver or Scholarship', '100% Waiver or Scholarship'])
 
     see = stl.selectbox('Enter your Choice', ['See Payment Roadmap', '1st Installment', '2nd Installment', '3rd Installment'])
 
